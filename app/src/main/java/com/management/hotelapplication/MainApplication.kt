@@ -3,12 +3,12 @@ package com.management.hotelapplication
 import android.app.Application
 import androidx.room.Room
 import com.management.hotelapplication.database.AppDatabase
+import com.management.hotelapplication.network.KtorClient
 import com.management.hotelapplication.ui.home.HomeViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.dsl.module
 
@@ -22,10 +22,10 @@ class MainApplication : Application() {
             androidContext(this@MainApplication)
             modules(
                 databaseModule,
-                viewModelModule
+                viewModelModule,
+                networkModule
             )
         }
-
 
     }
 
@@ -39,6 +39,10 @@ class MainApplication : Application() {
         }
 
         single { provideDatabase(androidApplication()) }
+    }
+
+    private val networkModule = module {
+        single { KtorClient().getHttpClient() }
     }
 
     private val viewModelModule = module{

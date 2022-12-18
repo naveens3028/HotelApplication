@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.databinding.FragmentHomeBinding
+import io.ktor.client.*
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
@@ -17,8 +18,9 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val homeViewModel: HomeViewModel by inject()
+    private val homeViewModel: HomeViewModel by viewModel()
     val database : AppDatabase by inject()
+    val ktorClient : HttpClient by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +40,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.addDatasToDb(database)
+        homeViewModel.addDatasToDb(database, ktorClient)
 
         println(database.menuDao().getData())
     }
