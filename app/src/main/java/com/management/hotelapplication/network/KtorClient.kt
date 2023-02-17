@@ -4,19 +4,21 @@ import android.util.Log
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.engine.cio.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.logging.*
-import io.ktor.client.features.observer.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
+import io.ktor.client.plugins.observer.*
+
 
 class KtorClient {
 
     fun getHttpClient() = HttpClient(Android) {
 
-        install(JsonFeature) {
+
+        install(ContentNegotiation) {
             //Gson parser using io.ktor:ktor-client-gson
             val client = HttpClient(CIO) {
-                install(JsonFeature) {
-                    install(JsonFeature)
+                install(ContentNegotiation) {
+                    install(ContentNegotiation)
                 }
             }
 

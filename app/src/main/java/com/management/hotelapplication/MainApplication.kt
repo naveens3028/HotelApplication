@@ -23,7 +23,8 @@ class MainApplication : Application() {
             modules(
                 databaseModule,
                 viewModelModule,
-                networkModule
+                networkModule,
+                employeeModule
             )
         }
 
@@ -50,5 +51,12 @@ class MainApplication : Application() {
             HomeViewModel()
         }
     }
+
+    private val employeeModule = module{
+        single {
+            Employee("saro", 35)
+        }
+    }
+
 
 }
