@@ -112,12 +112,12 @@ class CameraActivity : AppCompatActivity() {
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
-                // Unbind use cases before rebinding
-                cameraProvider.unbindAll()
+            // Unbind use cases before rebinding
+            cameraProvider.unbindAll()
 
                 // Bind use cases to camera
             camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
-            preview?.setSurfaceProvider(binding.viewFinder.createSurfaceProvider(camera?.cameraInfo))
+            preview?.setSurfaceProvider(binding.viewFinder.surfaceProvider)
 
             }, ContextCompat.getMainExecutor(this))
     }
