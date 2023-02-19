@@ -10,4 +10,12 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="user_id">User Name</string>
+    <string name="password">Password</string>
+    <string name="hotel_name">Hotel Name</string>
+    <string name="two_seater">Two</string>
+    <string name="four_seater">Four</string>
+    <string name="six_seater">Six</string>
+    <string name="eight_seater">Eight</string>
+    <string name="total_seats">Total Seats</string>
 </resources>
