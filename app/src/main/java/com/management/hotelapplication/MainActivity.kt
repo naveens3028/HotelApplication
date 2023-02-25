@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Log.e( "test", "test")
+        Log.e( "test", "test 123")
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
