@@ -6,7 +6,9 @@ import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.model.MenuModel
 
 class MenuViewModel:ViewModel() {
-        val myLiveData=MutableLiveData<List<MenuModel>>()
+
+    val myLiveData=MutableLiveData<List<MenuModel>>()
+
     fun saveData(data: MenuModel, database: AppDatabase) {
         database.menuDao().updateData(data)
     }

@@ -4,10 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.management.hotelapplication.databinding.ActivityMainBinding
-
-
-
 
 class AdminloginActivity : AppCompatActivity() {
 

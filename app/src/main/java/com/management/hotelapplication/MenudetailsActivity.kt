@@ -10,7 +10,7 @@ import com.management.hotelapplication.databinding.ActivityMenudetailsBinding
 import com.management.hotelapplication.model.MenuModel
 import com.management.hotelapplication.viewmodel.MenuViewModel
 
-class MenudetailsActivity : AppCompatActivity()
+class MenudetailsActivity() : AppCompatActivity()
 {
     lateinit var binding: ActivityMenudetailsBinding
     lateinit var menuViewModel:MenuViewModel
@@ -26,11 +26,12 @@ class MenudetailsActivity : AppCompatActivity()
             val data = MenuModel(
                 itemName = binding.fname.text.toString(),
                 description = binding.fdes.text.toString(),
-                price = this.binding.fpric.text.toString(), image = "Sample"
+                price = this.binding.fpric.text.toString(), image = " "
             )
             menuViewModel.saveData(data, database)
 
         }
             menuViewModel.getDataFromDb(database)
+
     }
 }
