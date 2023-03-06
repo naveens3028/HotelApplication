@@ -1,5 +1,6 @@
 package com.management.hotelapplication.database
 
+import android.text.Editable
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.management.hotelapplication.dao.MenuDao

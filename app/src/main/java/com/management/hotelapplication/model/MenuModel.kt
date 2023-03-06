@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 data class MenuModel(
     @PrimaryKey(autoGenerate = true) var id: Int=0,
     @ColumnInfo(name = "itemName") var itemName: String?,
-    @ColumnInfo(name = "price") var price: Int?,
+    @ColumnInfo(name = "price") var price: String,
     @ColumnInfo(name = "description") var description: String?,
     @ColumnInfo(name = "image") var image: String?
 )

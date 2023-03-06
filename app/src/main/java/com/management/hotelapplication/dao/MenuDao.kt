@@ -13,6 +13,6 @@ interface MenuDao {
     fun getData() : List<MenuModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun updateData(data: List<MenuModel>)
+    fun updateData(data: MenuModel)
 
 }
