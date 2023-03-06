@@ -26,7 +26,7 @@ class MenudetailsActivity() : AppCompatActivity()
             val data = MenuModel(
                 itemName = binding.fname.text.toString(),
                 description = binding.fdes.text.toString(),
-                price = this.binding.fpric.text.toString(), image = " "
+                price = this.binding.fpric.text.toString(), image = ""
             )
             menuViewModel.saveData(data, database)
 
