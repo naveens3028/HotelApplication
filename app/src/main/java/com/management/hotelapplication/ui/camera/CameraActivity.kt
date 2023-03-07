@@ -14,7 +14,6 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.gson.Gson
 import com.management.hotelapplication.R
 import com.management.hotelapplication.databinding.ActivityCameraBinding
 import java.io.File
@@ -31,6 +30,7 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
     private var camera: Camera? = null
     private var imageUrl: Uri? = null
+    private var lensFacing = CameraSelector.DEFAULT_BACK_CAMERA
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +46,16 @@ class CameraActivity : AppCompatActivity() {
             startCamera()
         } else {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+        }
+
+
+        binding.ivCameraSwitch.setOnClickListener {
+            lensFacing = if (CameraSelector.DEFAULT_BACK_CAMERA == lensFacing) {
+                CameraSelector.DEFAULT_FRONT_CAMERA
+            } else {
+                CameraSelector.DEFAULT_BACK_CAMERA
+            }
+            startCamera()
         }
 
         // set on click listener for the button of capture photo
@@ -112,14 +122,11 @@ class CameraActivity : AppCompatActivity() {
 
             imageCapture = ImageCapture.Builder().build()
 
-            // Select back camera as a default
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
-
             // Unbind use cases before rebinding
             cameraProvider.unbindAll()
 
                 // Bind use cases to camera
-            camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
+            camera = cameraProvider.bindToLifecycle(this, lensFacing, preview, imageCapture)
             preview?.setSurfaceProvider(binding.viewFinder.surfaceProvider)
 
             }, ContextCompat.getMainExecutor(this))
