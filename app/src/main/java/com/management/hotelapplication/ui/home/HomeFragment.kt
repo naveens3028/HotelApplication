@@ -1,22 +1,20 @@
 package com.management.hotelapplication.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.management.hotelapplication.Employee
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.databinding.FragmentHomeBinding
+import com.management.hotelapplication.model.MenuModel
 import io.ktor.client.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
@@ -25,7 +23,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val homeViewModel: HomeViewModel by viewModel()
+    lateinit var homeViewModel: HomeViewModel
     val database: AppDatabase by inject()
     val ktorClient: HttpClient by inject()
     val employee: Employee by inject()
@@ -41,25 +39,35 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         // val textView: TextView = binding.textHome
+/*
         homeViewModel.text.observe(viewLifecycleOwner) {
             //   textView.text = it
         }
+*/
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.addDatasToDb(database, ktorClient)
-        employee.demo()
-        employee.sample()
-        println(database.menuDao().getData())
 
-        val myRef = firebaseInstance.getReference("Employee")
+      //  val myRef = firebaseInstance.getReference("Employee")
+
+        homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
 
         binding.button2.setOnClickListener {
-            postDataToFireBase(myRef)
+            val data = MenuModel(itemName = binding.hotelname.text.toString(), price = binding.totalSeat.text.toString(),
+            image = "sample", description = "hello")
+
+            homeViewModel.saveDataToDb(data, database)
         }
 
+
+        homeViewModel.myLiveData.observe(viewLifecycleOwner, Observer {
+            Log.e("PoperDb", it.toString())
+        })
+
+
+/*
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.children.forEach {
@@ -73,8 +81,10 @@ class HomeFragment : Fragment() {
             }
 
         })
+*/
     }
 
+/*
     private fun postDataToFireBase(myRef: DatabaseReference) {
         val id = myRef.push().key
 
@@ -85,6 +95,7 @@ class HomeFragment : Fragment() {
         }
 
     }
+*/
 
     override fun onDestroyView() {
         super.onDestroyView()
