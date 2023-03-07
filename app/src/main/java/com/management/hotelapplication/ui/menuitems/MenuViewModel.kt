@@ -1,4 +1,4 @@
-package com.management.hotelapplication.viewmodel
+package com.management.hotelapplication.ui.menuitems
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

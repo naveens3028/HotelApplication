@@ -2,24 +2,23 @@ package com.management.hotelapplication.ui.menuitems
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.management.hotelapplication.database.AppDatabase
-import com.management.hotelapplication.databinding.ActivityMenudetailsBinding
 import com.management.hotelapplication.database.DatabaseBuilder
+import com.management.hotelapplication.databinding.ActivityMenudetailsBinding
 import com.management.hotelapplication.table.MenuModel
 import com.management.hotelapplication.ui.camera.CameraActivity
 import com.management.hotelapplication.utils.AppUtils
-import com.management.hotelapplication.viewmodel.MenuViewModel
 
-class MenudetailsActivity : AppCompatActivity() {
+class MenuListingActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMenudetailsBinding
-    lateinit var menuViewModel:MenuViewModel
-    lateinit var  database:AppDatabase
-    private var imageUrl: String ?= null
+    lateinit var menuViewModel: MenuViewModel
+    lateinit var database: AppDatabase
+    private var imageUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
