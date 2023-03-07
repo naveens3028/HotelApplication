@@ -13,12 +13,22 @@
         android:orientation="vertical"
         android:padding="8dp">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fd_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="5dp"
+            android:src="@mipmap/ic_launcher_round"/>
+
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/fd_name"
             style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fd_name"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/fd_img"
             android:textColor="@color/black" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -28,7 +38,8 @@
             android:layout_below="@+id/fd_name"
             android:text="@string/fd_description"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:layout_toRightOf="@+id/fd_img"
+            android:textSize="14sp" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -37,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/fd_descript"
             android:text="@string/fd_price"
+            android:layout_toRightOf="@+id/fd_img"
             android:textColor="@color/black"
             android:textSize="16sp" />
 

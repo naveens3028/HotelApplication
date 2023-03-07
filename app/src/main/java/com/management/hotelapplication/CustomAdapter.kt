@@ -3,31 +3,30 @@ package com.management.hotelapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.management.hotelapplication.model.MenuModel
 
 class CustomAdapter(private val mylist: List<MenuModel>): RecyclerView.Adapter<CustomAdapter.ViewHolder>()
     {
 
         // create new views
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
-
-        {
-
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.listitems_recycler, parent, false)
-
             return ViewHolder(view)
          }
 
         // binds the list items to a view
         override fun onBindViewHolder(holder: ViewHolder, position: Int)
         {
-
-             holder.fdname.text = mylist.get(position).itemName.toString()
-             holder.fddes.text = mylist.get(position).description.toString()
-             holder.fdprice.text = mylist.get(position).price.toString()
+            val data = mylist[position]
+             holder.fdname.text = data.itemName.toString()
+             holder.fddes.text = data.description.toString()
+             holder.fdprice.text = data.price.toString()
+            if (!data.image.isNullOrEmpty()) Glide.with(holder.itemView.context).load(data.image).into(holder.fd_img)
          }
 
     // return the number of the items in the list
@@ -42,6 +41,7 @@ class CustomAdapter(private val mylist: List<MenuModel>): RecyclerView.Adapter<C
         val fdname:AppCompatTextView = itemView.findViewById(R.id.fd_name)
         val fddes: AppCompatTextView = itemView.findViewById(R.id.fd_descript)
         val fdprice: AppCompatTextView = itemView.findViewById(R.id.fd_price)
+        val fd_img: AppCompatImageView = itemView.findViewById(R.id.fd_img)
 
     }
     }
