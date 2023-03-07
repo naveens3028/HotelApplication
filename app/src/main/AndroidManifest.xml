@@ -22,10 +22,10 @@
         android:theme="@style/Theme.HotelApplication"
         tools:targetApi="31">
         <activity
-            android:name=".MenudetailsActivity"
+            android:name=".ui.menuitems.MenudetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".AdminloginActivity"
+            android:name=".ui.menuitems.AdminloginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

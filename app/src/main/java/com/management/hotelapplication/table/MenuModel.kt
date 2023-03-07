@@ -1,4 +1,4 @@
-package com.management.hotelapplication.model
+package com.management.hotelapplication.table
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

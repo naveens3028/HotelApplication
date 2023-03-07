@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.management.hotelapplication.Employee
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.databinding.FragmentHomeBinding
-import com.management.hotelapplication.model.MenuModel
+import com.management.hotelapplication.table.MenuModel
 import io.ktor.client.*
 import org.koin.android.ext.android.inject
 

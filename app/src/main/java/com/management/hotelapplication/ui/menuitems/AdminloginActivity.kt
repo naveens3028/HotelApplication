@@ -1,4 +1,4 @@
-package com.management.hotelapplication
+package com.management.hotelapplication.ui.menuitems
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.management.hotelapplication.adapter.CustomAdapter
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.databinding.ActivityAdminloginBinding
-import com.management.hotelapplication.model.DatabaseBuilder
-import com.management.hotelapplication.model.MenuModel
+import com.management.hotelapplication.database.DatabaseBuilder
+import com.management.hotelapplication.table.MenuModel
 import com.management.hotelapplication.viewmodel.MenuViewModel
 
 class AdminloginActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class AdminloginActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
 
        binding.floatingBtn.setOnClickListener {
-            val intent = Intent(this,MenudetailsActivity::class.java)
+            val intent = Intent(this, MenudetailsActivity::class.java)
             startActivity(intent)
        }
 

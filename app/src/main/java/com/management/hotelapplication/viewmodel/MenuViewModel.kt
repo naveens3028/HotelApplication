@@ -3,7 +3,7 @@ package com.management.hotelapplication.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.management.hotelapplication.database.AppDatabase
-import com.management.hotelapplication.model.MenuModel
+import com.management.hotelapplication.table.MenuModel
 
 class MenuViewModel:ViewModel() {
 
