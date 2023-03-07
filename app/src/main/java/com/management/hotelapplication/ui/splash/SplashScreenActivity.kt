@@ -28,6 +28,7 @@ class SplashScreenActivity : AppCompatActivity() {
     fun navigateToHome() {
         val intent = Intent(this, MenuAddItemsActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
 }
