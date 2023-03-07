@@ -33,9 +33,7 @@ class MenudetailsActivity() : AppCompatActivity()
                 price = this.binding.fpric.text.toString(), image = ""
             )
             menuViewModel.saveData(data, database)
-
             finish()
-
         }
 
     }

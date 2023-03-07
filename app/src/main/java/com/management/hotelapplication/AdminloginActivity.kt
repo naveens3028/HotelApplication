@@ -3,6 +3,7 @@ package com.management.hotelapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.management.hotelapplication.database.AppDatabase
@@ -28,15 +29,24 @@ class AdminloginActivity : AppCompatActivity() {
             val intent = Intent(this,MenudetailsActivity::class.java)
             startActivity(intent)
        }
+
+        viewModel.myLiveData.observe(this, Observer {
+            binding.recyclerView.visibility = View.VISIBLE
+            binding.txtView.visibility = View.GONE
+            createAdapter(it)
+        })
+
+        viewModel.errorMsg.observe(this, Observer {
+            binding.recyclerView.visibility = View.GONE
+            binding.txtView.visibility = View.VISIBLE
+            binding.txtView.text = it
+        })
+
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getDataFromDb(database = database)
-
-        viewModel.myLiveData.observe(this, Observer {
-            createAdapter(it)
-        })
     }
 
     fun createAdapter(list : List<MenuModel>){

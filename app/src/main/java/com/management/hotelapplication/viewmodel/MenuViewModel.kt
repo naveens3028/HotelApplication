@@ -8,13 +8,19 @@ import com.management.hotelapplication.model.MenuModel
 class MenuViewModel:ViewModel() {
 
     val myLiveData=MutableLiveData<List<MenuModel>>()
+    val errorMsg=MutableLiveData<String>()
 
     fun saveData(data: MenuModel, database: AppDatabase) {
         database.menuDao().updateData(data)
     }
 
     fun getDataFromDb(database: AppDatabase) {
-    myLiveData.value=database.menuDao().getData()
+        val data = database.menuDao().getData()
+        if (!data.isNullOrEmpty()){
+            myLiveData.value = data
+        }else{
+            errorMsg.value = "No Data's Found"
+        }
     }
 
 }
