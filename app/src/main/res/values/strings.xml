@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HotelApplication</string>
+    <string name="app_name">Hotel Application</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -18,4 +18,9 @@
     <string name="six_seater">Six</string>
     <string name="eight_seater">Eight</string>
     <string name="total_seats">Total Seats</string>
+    <string name="fd_name">Food Name</string>
+    <string name="fd_description">Food Description</string>
+    <string name="fd_price">Price</string>
+    <string name="save_btn">SAVE</string>
+
 </resources>
