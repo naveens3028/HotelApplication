@@ -25,7 +25,7 @@ class MainApplication : Application() {
             androidContext(this@MainApplication)
             modules(
                 databaseModule,
-                viewModelModule,
+                 viewModelModule,
                 networkModule,
                 employeeModule,
                 firebaseModule
