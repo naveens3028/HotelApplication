@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal"
     tools:context=".MenudetailsActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/menu_details"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="35dp"
         android:text="ADD MENU DETAILS"
         android:textColor="@color/black"
         android:textSize="30dp"
@@ -20,45 +21,41 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/fname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:hint="@string/fd_name"
-         />
+        />
 
     <androidx.appcompat.widget.AppCompatEditText
-
         android:id="@+id/fdes"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/fname"
-        android:layout_marginLeft="150dp"
-        android:layout_marginBottom="-91dp"
         android:hint="@string/fd_description"
-        android:textColorHint="@color/black" />
+        android:layout_margin="20dp"
+       />
 
     <androidx.appcompat.widget.AppCompatEditText
-
         android:id="@+id/fpric"
-        android:layout_width="183dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/fdes"
-        android:layout_marginLeft="140dp"
-        android:layout_marginBottom="-86dp"
         android:hint="@string/fd_price"
-        android:textColorHint="@color/black" />
+        android:layout_margin="20dp"
+      />
 
     <Button
         android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="630dp"
         android:text="SAVE"
         android:textColor="@color/white"
-        android:textStyle="italic" />
+        android:textStyle="bold" />
 
 
-</RelativeLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

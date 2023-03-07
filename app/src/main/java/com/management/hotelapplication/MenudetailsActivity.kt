@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.databinding.ActivityMenudetailsBinding
+import com.management.hotelapplication.model.DatabaseBuilder
 import com.management.hotelapplication.model.MenuModel
 import com.management.hotelapplication.viewmodel.MenuViewModel
 
@@ -21,6 +22,9 @@ class MenudetailsActivity() : AppCompatActivity()
         super.onCreate(savedInstanceState)
         binding = ActivityMenudetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        database = DatabaseBuilder.getInstance(this)
+
         menuViewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
         binding.saveBtn.setOnClickListener {
             val data = MenuModel(
@@ -30,8 +34,9 @@ class MenudetailsActivity() : AppCompatActivity()
             )
             menuViewModel.saveData(data, database)
 
+            finish()
+
         }
-            menuViewModel.getDataFromDb(database)
 
     }
 }

@@ -23,12 +23,14 @@ import com.management.hotelapplication.ui.camera.CameraActivity
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.e("test", "test 123")
 

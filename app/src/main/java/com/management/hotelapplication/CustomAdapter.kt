@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.management.hotelapplication.model.MenuModel
 
-class CustomAdapter(private val mylist:ArrayList<MenuModel>): RecyclerView.Adapter<CustomAdapter.ViewHolder>()
+class CustomAdapter(private val mylist: List<MenuModel>): RecyclerView.Adapter<CustomAdapter.ViewHolder>()
     {
 
         // create new views
