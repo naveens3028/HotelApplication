@@ -1,6 +1,7 @@
 package com.management.hotelapplication.ui.camera
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
 import com.management.hotelapplication.R
 import com.management.hotelapplication.databinding.ActivityCameraBinding
 import java.io.File
@@ -28,6 +30,7 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var binding: ActivityCameraBinding
     private var camera: Camera? = null
+    private var imageUrl: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,13 +83,13 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val savedUri = Uri.fromFile(photoFile)
+                    imageUrl = Uri.fromFile(photoFile)
 
                     // set the saved uri to the image view
                     findViewById<ImageView>(R.id.iv_capture).visibility = View.VISIBLE
-                    findViewById<ImageView>(R.id.iv_capture).setImageURI(savedUri)
+                    findViewById<ImageView>(R.id.iv_capture).setImageURI(imageUrl)
 
-                    val msg = "Photo capture succeeded: $savedUri"
+                    val msg = "Photo capture succeeded: $imageUrl"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
                     Log.d(TAG, msg)
                 }
@@ -153,6 +156,13 @@ class CameraActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        val returnIntent = Intent()
+        returnIntent.putExtra("source", imageUrl.toString())
+        setResult(RESULT_OK, returnIntent)
+        finish()
     }
 
     companion object {
