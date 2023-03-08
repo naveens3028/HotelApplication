@@ -22,10 +22,10 @@
         android:theme="@style/Theme.HotelApplication"
         tools:targetApi="31">
         <activity
-            android:name=".ui.menuitems.MenuListingActivity"
+            android:name=".ui.menuitems.MenuAddItemActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.menuitems.MenuAddItemsActivity"
+            android:name=".ui.menuitems.MenuListingActivity"
             android:exported="true">
         </activity>
 
