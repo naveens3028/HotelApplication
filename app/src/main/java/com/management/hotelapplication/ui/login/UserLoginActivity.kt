@@ -10,7 +10,7 @@ import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.database.DatabaseBuilder
 import com.management.hotelapplication.databinding.ActivityUserloginBinding
 import com.management.hotelapplication.table.UserLogin
-import com.management.hotelapplication.ui.splash.SplashScreenActivity
+import com.management.hotelapplication.ui.menuitems.MenuListingActivity
 
 class UserLoginActivity() : AppCompatActivity() {
 
@@ -45,7 +45,8 @@ class UserLoginActivity() : AppCompatActivity() {
 
         userloginViewModel.liveDataLogin.observe(this, Observer {
             if (it) {
-                startActivity(Intent(this, SplashScreenActivity::class.java))
+                startActivity(Intent(this, MenuListingActivity::class.java))
+                finish()
             } else {
                 Toast.makeText(this, "Enter valid UserName or Password", Toast.LENGTH_SHORT).show()
             }

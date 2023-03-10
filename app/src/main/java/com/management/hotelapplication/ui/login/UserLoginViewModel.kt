@@ -11,14 +11,7 @@ class UserLoginViewModel : ViewModel() {
 
     fun checkValidcreds(data: UserLogin, db: AppDatabase) {
         val userData = db.userloginDao().getLoginDetails(data.username, data.password)
-        if (userData != null) {
-            userData.let {
-                liveDataLogin.value =
-                    data.username == userData?.username && data.password == userData?.password
-            }
-        } else {
-            liveDataLogin.value = false
-        }
+        liveDataLogin.value = (userData != null)
     }
 
 

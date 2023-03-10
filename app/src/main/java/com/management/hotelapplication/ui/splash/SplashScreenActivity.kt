@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.management.hotelapplication.R
 import com.management.hotelapplication.databinding.ActivitySplashBinding
-import com.management.hotelapplication.ui.menuitems.MenuListingActivity
+import com.management.hotelapplication.ui.login.UserLoginActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -41,7 +41,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     fun navigateToHome() {
-        val intent = Intent(this, MenuListingActivity::class.java)
+        val intent = Intent(this, UserLoginActivity::class.java)
         startActivity(intent)
         finish()
     }
