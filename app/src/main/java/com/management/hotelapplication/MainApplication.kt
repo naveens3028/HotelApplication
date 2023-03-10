@@ -6,6 +6,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.network.KtorClient
 import com.management.hotelapplication.ui.home.HomeViewModel
+import com.management.hotelapplication.ui.login.UserLoginViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -51,6 +52,7 @@ class MainApplication : Application() {
     private val viewModelModule = module{
         viewModel {
             HomeViewModel()
+            UserLoginViewModel()
         }
     }
 

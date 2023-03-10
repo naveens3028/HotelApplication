@@ -5,18 +5,17 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.management.hotelapplication.database.AppDatabase
-import com.management.hotelapplication.database.DatabaseBuilder
 import com.management.hotelapplication.databinding.ActivityUserloginBinding
 import com.management.hotelapplication.table.UserLogin
 import com.management.hotelapplication.ui.menuitems.MenuListingActivity
+import org.koin.android.ext.android.inject
 
-class UserLoginActivity() : AppCompatActivity() {
+class UserLoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityUserloginBinding
-    lateinit var userloginViewModel: UserLoginViewModel
-    lateinit var db: AppDatabase
+    val userloginViewModel: UserLoginViewModel by inject()
+    val db: AppDatabase by inject()
     lateinit var user_name: String
     lateinit var passwrd: String
 
@@ -24,9 +23,6 @@ class UserLoginActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUserloginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        db = DatabaseBuilder.getInstance(this)
-        userloginViewModel = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
         binding.submit.setOnClickListener {
             user_name = binding.username.text.toString()
