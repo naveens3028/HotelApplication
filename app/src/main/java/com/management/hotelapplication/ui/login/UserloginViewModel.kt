@@ -9,21 +9,16 @@ class UserloginViewModel:ViewModel() {
 
     val liveDataLogin= MutableLiveData<Boolean>()
 
-
     fun checkValidcreds(data: UserLogin,db: AppDatabase)
     {
-
-
-        val userData=db.userloginDao().getLoginDetails(data.username,data.password)
-
-        if (data.username==userData.username && data.password==userData.password)
-        {
-
-            liveDataLogin.value = true
-        }
-       else
-        {
-            liveDataLogin.value=false
+        val userData = db.userloginDao().getLoginDetails(data.username, data.password)
+        if (userData != null) {
+            userData.let {
+                liveDataLogin.value =
+                    data.username == userData?.username && data.password == userData?.password
+            }
+        } else {
+            liveDataLogin.value = false
         }
     }
 

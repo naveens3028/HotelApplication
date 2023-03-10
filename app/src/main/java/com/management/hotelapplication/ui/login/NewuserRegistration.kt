@@ -1,8 +1,8 @@
 package com.management.hotelapplication.ui.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.MutableLiveData
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.database.DatabaseBuilder
 import com.management.hotelapplication.databinding.ActivityNewuserregBinding
@@ -14,17 +14,19 @@ class NewuserRegistration : AppCompatActivity() {
     lateinit var newUserViewModel: NewUserViewModel
     lateinit var dat:AppDatabase
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityNewuserregBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        newUserViewModel = ViewModelProvider(this).get(NewUserViewModel::class.java)
         dat = DatabaseBuilder.getInstance(this)
         binding.save.setOnClickListener {
-            val info=UserLogin(
-                username=binding.newusername.text.toString(),
+            val info = UserLogin(
+                username = binding.newusername.text.toString(),
                 password = binding.newuserpass.text.toString()
             )
-            newUserViewModel.updateUserDetails(info,dat)
+            newUserViewModel.updateUserDetails(info, dat)
             finish()
         }
 
