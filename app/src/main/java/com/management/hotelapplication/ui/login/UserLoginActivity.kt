@@ -12,10 +12,10 @@ import com.management.hotelapplication.databinding.ActivityUserloginBinding
 import com.management.hotelapplication.table.UserLogin
 import com.management.hotelapplication.ui.splash.SplashScreenActivity
 
-class Userlogin() : AppCompatActivity() {
+class UserLoginActivity() : AppCompatActivity() {
 
     lateinit var binding: ActivityUserloginBinding
-    lateinit var userloginViewModel: UserloginViewModel
+    lateinit var userloginViewModel: UserLoginViewModel
     lateinit var db: AppDatabase
     lateinit var user_name: String
     lateinit var passwrd: String
@@ -26,7 +26,7 @@ class Userlogin() : AppCompatActivity() {
         setContentView(binding.root)
 
         db = DatabaseBuilder.getInstance(this)
-        userloginViewModel = ViewModelProvider(this).get(UserloginViewModel::class.java)
+        userloginViewModel = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
         binding.submit.setOnClickListener {
             user_name = binding.username.text.toString()
@@ -53,7 +53,7 @@ class Userlogin() : AppCompatActivity() {
 
         binding.registernow.setOnClickListener {
 
-            val intent = Intent(this, NewuserRegistration::class.java)
+            val intent = Intent(this, NewUserRegistration::class.java)
             startActivity(intent)
         }
 

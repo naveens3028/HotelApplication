@@ -8,11 +8,11 @@ import com.management.hotelapplication.database.DatabaseBuilder
 import com.management.hotelapplication.databinding.ActivityNewuserregBinding
 import com.management.hotelapplication.table.UserLogin
 
-class NewuserRegistration : AppCompatActivity() {
+class NewUserRegistration : AppCompatActivity() {
 
     lateinit var binding: ActivityNewuserregBinding
     lateinit var newUserViewModel: NewUserViewModel
-    lateinit var dat:AppDatabase
+    lateinit var dat: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

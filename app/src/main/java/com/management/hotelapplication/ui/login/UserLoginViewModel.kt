@@ -5,12 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.table.UserLogin
 
-class UserloginViewModel:ViewModel() {
+class UserLoginViewModel : ViewModel() {
 
-    val liveDataLogin= MutableLiveData<Boolean>()
+    val liveDataLogin = MutableLiveData<Boolean>()
 
-    fun checkValidcreds(data: UserLogin,db: AppDatabase)
-    {
+    fun checkValidcreds(data: UserLogin, db: AppDatabase) {
         val userData = db.userloginDao().getLoginDetails(data.username, data.password)
         if (userData != null) {
             userData.let {
