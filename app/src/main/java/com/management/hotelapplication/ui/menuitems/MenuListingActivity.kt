@@ -1,55 +1,58 @@
 package com.management.hotelapplication.ui.menuitems
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
+import com.management.hotelapplication.adapter.CustomAdapter
 import com.management.hotelapplication.database.AppDatabase
-import com.management.hotelapplication.database.DatabaseBuilder
-import com.management.hotelapplication.databinding.ActivityMenudetailsBinding
+import com.management.hotelapplication.databinding.ActivityAdminloginBinding
 import com.management.hotelapplication.table.MenuModel
-import com.management.hotelapplication.ui.camera.CameraActivity
-import com.management.hotelapplication.utils.AppUtils
+import org.koin.android.ext.android.inject
 
 class MenuListingActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMenudetailsBinding
-    lateinit var menuViewModel: MenuViewModel
-    lateinit var database: AppDatabase
-    private var imageUrl: String? = null
+    lateinit var binding: ActivityAdminloginBinding
+    lateinit var viewModel: MenuViewModel
+    val database: AppDatabase by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMenudetailsBinding.inflate(layoutInflater)
+        binding = ActivityAdminloginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        database = DatabaseBuilder.getInstance(this)
+        viewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
 
-        menuViewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
-        binding.saveBtn.setOnClickListener {
-            val data = MenuModel(
-                itemName = binding.fname.text.toString(),
-                description = binding.fdes.text.toString(),
-                price = this.binding.fpric.text.toString(),
-                image = imageUrl
-            )
-            menuViewModel.saveData(data, database)
-            finish()
+        binding.floatingBtn.setOnClickListener {
+            val intent = Intent(this, MenuAddItemActivity::class.java)
+            startActivity(intent)
         }
 
-        binding.menuImgView.setOnClickListener {
-            val i = Intent(this, CameraActivity::class.java)
-            startActivityForResult(i, AppUtils.LAUNCH_CAMERA_ACTIVITY)
-        }
+        viewModel.myLiveData.observe(this, Observer {
+            binding.recyclerView.visibility = View.VISIBLE
+            binding.txtView.visibility = View.GONE
+            createAdapter(it)
+        })
+
+        viewModel.errorMsg.observe(this, Observer {
+            binding.recyclerView.visibility = View.GONE
+            binding.txtView.visibility = View.VISIBLE
+            binding.txtView.text = it
+        })
+
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode ==  AppUtils.LAUNCH_CAMERA_ACTIVITY) {
-            imageUrl = data?.getStringExtra("source")
-            Glide.with(this).load(imageUrl).into(binding.menuImgView)
-        }
+    override fun onResume() {
+        super.onResume()
+        viewModel.getDataFromDb(database = database)
     }
+
+    fun createAdapter(list: List<MenuModel>) {
+        val adapter = CustomAdapter(list)
+        binding.recyclerView.adapter = adapter
+    }
+
+
 }

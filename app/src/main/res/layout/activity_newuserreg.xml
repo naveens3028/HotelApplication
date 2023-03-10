@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal"
+    tools:context=".ui.login.NewUserRegistration">
+
+    <TextView
+        android:id="@+id/newuserreg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/newuser_registration"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/newusername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/newuser_name"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignBottom="@id/newuserreg"/>
+
+
+    <EditText
+        android:id="@+id/newuserpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/newuser_pass"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/save_btn"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

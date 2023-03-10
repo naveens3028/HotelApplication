@@ -22,5 +22,13 @@
     <string name="fd_description">Food Description</string>
     <string name="fd_price">Price</string>
     <string name="save_btn">SAVE</string>
+    <string name="user_login">User Login</string>
+    <string name="user_nam">User Name</string>
+    <string name="passwrd">Password</string>
+    <string name="submit_btn">Submit</string>
+    <string name="Reg_now">Register Now</string>
+    <string name="newuser_registration">UserRegistration Form</string>
+    <string name="newuser_name">User Name</string>
+    <string name="newuser_pass">Password</string>
 
 </resources>

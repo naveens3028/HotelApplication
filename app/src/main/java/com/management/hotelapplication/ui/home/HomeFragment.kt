@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.FirebaseDatabase
 import com.management.hotelapplication.Employee
 import com.management.hotelapplication.database.AppDatabase
@@ -23,7 +22,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    lateinit var homeViewModel: HomeViewModel
+    val homeViewModel: HomeViewModel by inject()
     val database: AppDatabase by inject()
     val ktorClient: HttpClient by inject()
     val employee: Employee by inject()
@@ -38,12 +37,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // val textView: TextView = binding.textHome
-/*
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            //   textView.text = it
-        }
-*/
         return root
     }
 
@@ -51,8 +44,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
       //  val myRef = firebaseInstance.getReference("Employee")
-
-        homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
 
         binding.button2.setOnClickListener {
             val data = MenuModel(itemName = binding.hotelname.text.toString(), price = binding.totalSeat.text.toString(),
