@@ -14,7 +14,7 @@ import org.koin.android.ext.android.inject
 class UserLoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityUserloginBinding
-    val userloginViewModel: UserLoginViewModel by inject()
+    val userLoginViewModel: UserLoginViewModel by inject()
     val db: AppDatabase by inject()
     lateinit var user_name: String
     lateinit var passwrd: String
@@ -34,12 +34,12 @@ class UserLoginActivity : AppCompatActivity() {
                     username = binding.username.text.toString(),
                     password = binding.password.text.toString()
                 )
-                userloginViewModel.checkValidcreds(data, db)
+                userLoginViewModel.checkValidcreds(data, db)
             }
         }
 
 
-        userloginViewModel.liveDataLogin.observe(this, Observer {
+        userLoginViewModel.liveDataLogin.observe(this, Observer {
             if (it) {
                 startActivity(Intent(this, MenuListingActivity::class.java))
                 finish()
