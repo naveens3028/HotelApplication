@@ -15,7 +15,7 @@ class UserLoginViewModel : ViewModel() {
     }
 
 
-    }
+}
 
 
 

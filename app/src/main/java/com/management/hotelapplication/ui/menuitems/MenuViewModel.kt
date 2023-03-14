@@ -5,20 +5,22 @@ import androidx.lifecycle.ViewModel
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.table.MenuModel
 
-class MenuViewModel:ViewModel() {
+class MenuViewModel : ViewModel() {
 
-    val myLiveData=MutableLiveData<List<MenuModel>>()
-    val errorMsg=MutableLiveData<String>()
+    val myLiveData = MutableLiveData<List<MenuModel>>()
+    val errorMsg = MutableLiveData<String>()
 
     fun saveData(data: MenuModel, database: AppDatabase) {
+
         database.menuDao().updateData(data)
+
     }
 
     fun getDataFromDb(database: AppDatabase) {
         val data = database.menuDao().getData()
-        if (!data.isNullOrEmpty()){
+        if (!data.isNullOrEmpty()) {
             myLiveData.value = data
-        }else{
+        } else {
             errorMsg.value = "No Data's Found"
         }
     }
