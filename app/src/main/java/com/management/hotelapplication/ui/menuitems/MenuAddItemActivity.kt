@@ -7,17 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.management.hotelapplication.database.AppDatabase
-import com.management.hotelapplication.database.DatabaseBuilder
 import com.management.hotelapplication.databinding.ActivityMenudetailsBinding
 import com.management.hotelapplication.table.MenuModel
 import com.management.hotelapplication.ui.camera.CameraActivity
 import com.management.hotelapplication.utils.AppUtils
+import org.koin.android.ext.android.inject
 
 class MenuAddItemActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMenudetailsBinding
     lateinit var menuViewModel: MenuViewModel
-    lateinit var database: AppDatabase
+    val database: AppDatabase by inject()
     private var imageUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,6 @@ class MenuAddItemActivity : AppCompatActivity() {
         binding = ActivityMenudetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        database = DatabaseBuilder.getInstance(this)
 
         menuViewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
         binding.saveBtn.setOnClickListener {

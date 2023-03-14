@@ -8,20 +8,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.management.hotelapplication.adapter.CustomAdapter
 import com.management.hotelapplication.database.AppDatabase
-import com.management.hotelapplication.database.DatabaseBuilder
 import com.management.hotelapplication.databinding.ActivityAdminloginBinding
 import com.management.hotelapplication.table.MenuModel
+import org.koin.android.ext.android.inject
 
 class MenuListingActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityAdminloginBinding
     lateinit var viewModel: MenuViewModel
-    lateinit var database: AppDatabase
+    val database: AppDatabase by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminloginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        database = DatabaseBuilder.getInstance(this)
 
         viewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
 

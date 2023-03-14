@@ -2,12 +2,11 @@ package com.management.hotelapplication
 
 import android.app.Application
 import androidx.room.Room
-import com.google.firebase.FirebaseApp
 import com.google.firebase.database.FirebaseDatabase
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.network.KtorClient
 import com.management.hotelapplication.ui.home.HomeViewModel
-import org.koin.android.ext.android.get
+import com.management.hotelapplication.ui.login.UserLoginViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -25,7 +24,7 @@ class MainApplication : Application() {
             androidContext(this@MainApplication)
             modules(
                 databaseModule,
-                 viewModelModule,
+                viewModelModule,
                 networkModule,
                 employeeModule,
                 firebaseModule
@@ -53,6 +52,7 @@ class MainApplication : Application() {
     private val viewModelModule = module{
         viewModel {
             HomeViewModel()
+            UserLoginViewModel()
         }
     }
 

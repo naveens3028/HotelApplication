@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.management.hotelapplication.table.UserLogin
-import com.management.hotelapplication.ui.login.Userlogin
 
 @Dao
 interface UserloginDao {
@@ -13,7 +12,7 @@ interface UserloginDao {
     fun insertUser(data: UserLogin)
 
     @Query("SELECT * FROM UserLogin WHERE username LIKE :username AND password LIKE :password")
-    fun getLoginDetails(username:String?,password:String?):UserLogin
+    fun getLoginDetails(username: String?, password: String?): UserLogin?
 
 
 
