@@ -24,5 +24,11 @@ class MenuViewModel : ViewModel() {
             errorMsg.value = "No Data's Found"
         }
     }
+        fun fetchDataFromDb(database: AppDatabase){
+
+            database.menuDao().getMenuDetails()
+
+
+        }
 
 }

@@ -10,9 +10,11 @@ import com.bumptech.glide.Glide
 import com.management.hotelapplication.R
 import com.management.hotelapplication.table.MenuModel
 
-class CustomAdapter(private val mylist: List<MenuModel>): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(private val mylist: List<MenuModel>,val listener: CustomAdapterListener): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-        // create new views
+
+
+    // create new views
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.listitems_recycler, parent, false)
@@ -27,7 +29,13 @@ class CustomAdapter(private val mylist: List<MenuModel>): RecyclerView.Adapter<C
              holder.fddes.text = data.description.toString()
              holder.fdprice.text = data.price.toString()
             if (!data.image.isNullOrEmpty()) Glide.with(holder.itemView.context).load(data.image).into(holder.fd_img)
-         }
+
+            holder.itemView.setOnClickListener{
+                listener.OnItemClick(data)
+
+            }
+
+        }
 
     // return the number of the items in the list
     override fun getItemCount(): Int
@@ -46,3 +54,8 @@ class CustomAdapter(private val mylist: List<MenuModel>): RecyclerView.Adapter<C
     }
 }
 
+interface CustomAdapterListener{
+
+    fun OnItemClick(data:MenuModel)
+
+}

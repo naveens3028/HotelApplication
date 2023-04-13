@@ -16,6 +16,14 @@
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold" />
+    <ImageButton
+        android:id="@+id/edit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_name"
+        android:layout_gravity="right"
+        />
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/menu_img_view"
@@ -36,6 +44,7 @@
         android:layout_margin="20dp"
         android:hint="@string/fd_name"
         />
+
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/fdes"
@@ -62,7 +71,8 @@
         android:layout_alignParentTop="false"
         android:text="SAVE"
         android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

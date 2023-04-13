@@ -25,10 +25,13 @@ class UserLoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.submit.setOnClickListener {
+
             user_name = binding.username.text.toString()
             passwrd = binding.password.text.toString()
+
             if (user_name.isNullOrEmpty() || passwrd.isNullOrEmpty()) {
-                Toast.makeText(this, "Enter valid username or Password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Enter valid username or Password", Toast.LENGTH_LONG).show()
+
             } else {
                 val data = UserLogin(
                     username = binding.username.text.toString(),
