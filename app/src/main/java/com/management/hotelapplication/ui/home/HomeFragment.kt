@@ -5,14 +5,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.management.hotelapplication.Employee
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.databinding.FragmentHomeBinding
 import com.management.hotelapplication.table.MenuModel
-import io.ktor.client.*
+import io.ktor.client.HttpClient
 import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
@@ -43,7 +48,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-      //  val myRef = firebaseInstance.getReference("Employee")
+        val myRef = firebaseInstance.getReference("Employee")
 
         binding.button2.setOnClickListener {
             val data = MenuModel(itemName = binding.hotelname.text.toString(), price = binding.totalSeat.text.toString(),
@@ -58,7 +63,6 @@ class HomeFragment : Fragment() {
         })
 
 
-/*
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.children.forEach {
@@ -72,10 +76,8 @@ class HomeFragment : Fragment() {
             }
 
         })
-*/
     }
 
-/*
     private fun postDataToFireBase(myRef: DatabaseReference) {
         val id = myRef.push().key
 
@@ -86,7 +88,6 @@ class HomeFragment : Fragment() {
         }
 
     }
-*/
 
     override fun onDestroyView() {
         super.onDestroyView()

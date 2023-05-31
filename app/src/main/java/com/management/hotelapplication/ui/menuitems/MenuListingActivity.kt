@@ -7,12 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.management.hotelapplication.adapter.CustomAdapter
+import com.management.hotelapplication.adapter.CustomListener
 import com.management.hotelapplication.database.AppDatabase
 import com.management.hotelapplication.databinding.ActivityAdminloginBinding
 import com.management.hotelapplication.table.MenuModel
 import org.koin.android.ext.android.inject
 
-class MenuListingActivity : AppCompatActivity() {
+class MenuListingActivity : AppCompatActivity(), CustomListener {
 
     lateinit var binding: ActivityAdminloginBinding
     lateinit var viewModel: MenuViewModel
@@ -50,9 +51,14 @@ class MenuListingActivity : AppCompatActivity() {
     }
 
     fun createAdapter(list: List<MenuModel>) {
-        val adapter = CustomAdapter(list)
+        val adapter = CustomAdapter(list, this)
         binding.recyclerView.adapter = adapter
     }
 
+    override fun onItemClick(id: Int) {
+        val intent = Intent(this, MenuAddItemActivity::class.java)
+        intent.putExtra("id", id)
+        startActivity(intent)
+    }
 
 }

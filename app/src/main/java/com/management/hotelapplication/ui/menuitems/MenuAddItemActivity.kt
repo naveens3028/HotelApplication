@@ -25,6 +25,7 @@ class MenuAddItemActivity : AppCompatActivity() {
         binding = ActivityMenudetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val id = intent.getIntExtra("id", 0)
 
         menuViewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
         binding.saveBtn.setOnClickListener {
